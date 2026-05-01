@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKA Line Sisters Birthday Experience Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aka-green: #6AAB20;
+            --aka-pink: #FA8072;
+            --aka-dark: #2D1B2E;
+            --aka-cream: #FDF9F3;
+            --aka-light-green: #E8F3D8;
+            --aka-light-pink: #FFE8E2;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--aka-cream) 0%, #F5EDE4 100%);
+            color: var(--aka-dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--aka-green) 0%, #5a8f1a 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(106, 171, 32, 0.2);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.1;
+            top: -10px;
+            right: -10px;
+            transform: rotate(25deg);
+        }
+
+        .header::after {
+            content: '🌹';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.1;
+            bottom: -10px;
+            left: -10px;
+            transform: rotate(-25deg);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .aka-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 25px;
+            padding: 6px 16px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--aka-pink);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--aka-dark);
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover {
+            color: var(--aka-green);
+        }
+
+        .tab-btn.active {
+            color: var(--aka-pink);
+            border-bottom-color: var(--aka-pink);
+        }
+
+        /* FORM STYLES */
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--aka-green);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-num {
+            width: 40px;
+            height: 40px;
+            background: var(--aka-pink);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: var(--aka-green);
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--aka-dark);
+            font-size: 1em;
+        }
+
+        .hint {
+            font-size: 0.85em;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--aka-light-green);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--aka-pink);
+            box-shadow: 0 0 0 3px rgba(250, 128, 114, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: var(--aka-light-green);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .radio-item:hover,
+        .checkbox-item:hover {
+            background: var(--aka-light-pink);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--aka-pink);
+        }
+
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: var(--aka-light-green);
+            border: 2px solid var(--aka-green);
+            color: var(--aka-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chip.selected {
+            background: var(--aka-green);
+            color: white;
+        }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(106, 171, 32, 0.2);
+        }
+
+        /* BUTTONS */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--aka-pink);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #f06a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(250, 128, 114, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--aka-green);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #5a8f1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(106, 171, 32, 0.3);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            flex: 0;
+        }
+
+        /* DASHBOARD */
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .responses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .response-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid var(--aka-pink);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .response-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .response-card h3 {
+            color: var(--aka-green);
+            margin-bottom: 8px;
+        }
+
+        .response-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .profile-btn {
+            background: var(--aka-green);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .profile-btn:hover {
+            background: #5a8f1a;
+        }
+
+        /* PROFILE SHEET */
+        .profile-sheet {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 20px 0;
+        }
+
+        .profile-header {
+            text-align: center;
+            border-bottom: 3px solid var(--aka-pink);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 2em;
+            color: var(--aka-green);
+            margin-bottom: 5px;
+        }
+
+        .profile-header p {
+            color: var(--aka-pink);
+            font-size: 1.1em;
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-section h2 {
+            font-size: 1.3em;
+            color: var(--aka-pink);
+            border-bottom: 2px solid var(--aka-light-green);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .profile-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: var(--aka-light-green);
+            border-radius: 6px;
+        }
+
+        .profile-item label {
+            font-weight: 600;
+            color: var(--aka-green);
+            margin: 0;
+        }
+
+        .profile-item .value {
+            color: var(--aka-dark);
+            font-family: 'Courier New', monospace;
+        }
+
+        .print-btn {
+            background: var(--aka-green);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .print-btn:hover {
+            background: #5a8f1a;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .header, .tabs, .tab-btn, button, .print-btn {
+                display: none;
+            }
+            .profile-sheet {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+
+        /* SUCCESS MESSAGE */
+        .success-message {
+            background: var(--aka-light-green);
+            border-left: 5px solid var(--aka-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message h3 {
+            color: var(--aka-green);
+            margin-bottom: 5px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .tabs {
+                justify-content: center;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .profile-item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .responses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="aka-badge">Alpha Kappa Alpha Sorority, Inc.</div>
+            <h1>Line Sisters Birthday Experience Profile 🎉💗</h1>
+            <p>Help your line sisters celebrate YOU the way you deserve</p>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('form')">📝 Fill Out Profile</button>
+            <button class="tab-btn" onclick="switchTab('dashboard')">📊 View All Responses</button>
+        </div>
+
+        <!-- FORM TAB -->
+        <div id="form" class="form-container active">
+            <div class="success-message" id="successMessage">
+                <h3>✨ Profile saved successfully!</h3>
+                <p>Your line sisters will make your birthday unforgettable. We love you, Soror! 💗</p>
+            </div>
+
+            <form id="birthdayForm" onsubmit="submitForm(event)">
+                <!-- SECTION 1 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">1</div>
+                        <div class="section-title">Basic Information</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Line Name (if applicable)</label>
+                        <input type="text" name="lineName">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Birthday (Month & Day) *</label>
+                        <div class="hint">e.g. March 14</div>
+                        <input type="text" name="birthday" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Best Contact Method *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="contact" value="Email" required>
+                                Email
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="contact" value="Phone" required>
+                                Phone
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="contact" value="Either is fine" required>
+                                Either is fine
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone">
+                    </div>
+                </div>
+
+                <!-- SECTION 2 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">2</div>
+                        <div class="section-title">Important Dates & Family</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you have children? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="hasChildren" value="Yes" required>
+                                Yes
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="hasChildren" value="No" required>
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Children's names and birthdays</label>
+                        <div class="hint">e.g. Zoe — June 3, Marcus — November 18</div>
+                        <textarea name="childrenInfo" placeholder="List any children..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Anniversary or significant relationship date(s)</label>
+                        <textarea name="anniversaryDates" placeholder="Optional..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Any other important dates you would like acknowledged?</label>
+                        <textarea name="otherImportantDates" placeholder="Optional..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>How would you like these dates acknowledged?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dateAcknowledge" value="Text or phone call">
+                                Text or phone call
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dateAcknowledge" value="Handwritten card">
+                                Handwritten card or note
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dateAcknowledge" value="Group shoutout">
+                                Group shoutout in our chat
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dateAcknowledge" value="Social media post">
+                                Social media post
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dateAcknowledge" value="Surprise from sisters">
+                                A small surprise from the sisters
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">3</div>
+                        <div class="section-title">Birthday Style & Preferences</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>How do you like to celebrate your birthday? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Big group party" required>
+                                Big group party or event
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Intimate dinner" required>
+                                Intimate dinner with close people
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Solo treat day" required>
+                                Solo treat day (spa, shopping, me-time)
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Trip or getaway" required>
+                                Trip or weekend getaway
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Low-key at home" required>
+                                Low-key at home
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationStyle" value="Surprise me" required>
+                                Surprise me - I love it all!
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What is your ideal birthday vibe? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Glam and dressed up">
+                                Glam and dressed up
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Casual and cozy">
+                                Casual and cozy
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Adventurous">
+                                Adventurous / outdoor activities
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Spa and relaxation">
+                                Spa and relaxation
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Foodie experience">
+                                Foodie experience
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Arts and culture">
+                                Arts and culture (museum, show, gallery)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Dancing and nightlife">
+                                Dancing and nightlife
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="birthdayVibe" value="Games and fun">
+                                Games and fun activities
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you prefer planned events, surprises, or a mix? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="planPreference" value="Planned events" required>
+                                Planned events - I like to know what is coming
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="planPreference" value="Surprises" required>
+                                Surprises - I love the excitement!
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="planPreference" value="Mix of both" required>
+                                A mix of both
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What type of attention do you enjoy on your birthday? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="attentionType" value="All eyes on me" required>
+                                All eyes on me - I love being the center!
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="attentionType" value="Thoughtful gestures behind scenes" required>
+                                Thoughtful gestures behind the scenes
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="attentionType" value="Public acknowledgment" required>
+                                Public acknowledgment (posts, shoutouts)
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="attentionType" value="Private celebrations" required>
+                                Private, intimate celebrations
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you prefer group celebrations or 1-on-1 time? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationSize" value="Group celebrations" required>
+                                Group celebrations - the more the merrier!
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationSize" value="1-on-1 quality time" required>
+                                1-on-1 quality time with people I love
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="celebrationSize" value="Both depending on day" required>
+                                Both, depending on the day
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">4</div>
+                        <div class="section-title">Favorites (Essentials)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Cake Flavor</label>
+                        <div class="hint">e.g. red velvet, lemon, chocolate ganache</div>
+                        <input type="text" name="cakeFlavor">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Dessert (if not cake)</label>
+                        <input type="text" name="favoriteDessert">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Color(s)</label>
+                        <input type="text" name="favoriteColor">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Flower(s)</label>
+                        <input type="text" name="favoriteFlower">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Scent or Fragrance</label>
+                        <div class="hint">e.g. vanilla, jasmine, specific perfume name</div>
+                        <input type="text" name="favoriteScent">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Music, Artist, or Genre</label>
+                        <input type="text" name="favoriteMusic">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Drink (alcoholic or non-alcoholic)</label>
+                        <input type="text" name="favoriteDrink">
+                    </div>
+                </div>
+
+                <!-- SECTION 5 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">5</div>
+                        <div class="section-title">Food & Dining</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Cuisine(s)</label>
+                        <div class="hint">e.g. Italian, Caribbean, sushi, soul food</div>
+                        <input type="text" name="favoriteCuisine">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Restaurant(s)</label>
+                        <div class="hint">Local favorites or dream spots</div>
+                        <input type="text" name="favoriteRestaurant">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Any Dietary Restrictions or Preferences?</label>
+                        <div class="hint">e.g. vegetarian, vegan, gluten-free, nut allergy</div>
+                        <textarea name="dietaryRestrictions"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brunch, Lunch, or Dinner person? *</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="mealTime" value="Brunch - always" required>
+                                Brunch - always
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="mealTime" value="Lunch" required>
+                                Lunch
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="mealTime" value="Dinner" required>
+                                Dinner - I am a night person
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="mealTime" value="All of the above" required>
+                                All of the above, honestly
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 6 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">6</div>
+                        <div class="section-title">Gifts & Experiences</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What types of gifts do you enjoy? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Experiences">
+                                Experiences (spa, concerts, cooking class, travel)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Clothing and accessories">
+                                Clothing and accessories
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Home and decor">
+                                Home and decor
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Beauty and self-care">
+                                Beauty and self-care products
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Books and learning">
+                                Books and personal development
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Food and gourmet">
+                                Food and gourmet items
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Tech and gadgets">
+                                Tech and gadgets
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Gift cards">
+                                Gift cards (let me choose!)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Charitable donations">
+                                Charitable donations in my name
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="giftTypes" value="Handmade or personalized">
+                                Handmade or personalized items
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Something you have been wanting lately</label>
+                        <div class="hint">Optional - be specific or keep it general. We love a hint!</div>
+                        <textarea name="wantedItem"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you prefer practical, sentimental, luxury, or surprise gifts?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="giftPreference" value="Practical">
+                                Practical - I love things I will actually use
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="giftPreference" value="Sentimental">
+                                Sentimental - it is the thought that counts
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="giftPreference" value="Luxury">
+                                Luxury - treat me!
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="giftPreference" value="Surprise">
+                                Surprise me - I trust you all
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 7 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">7</div>
+                        <div class="section-title">Personality & Social Energy</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Which best describes you? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Introvert">
+                                Introvert - I recharge alone
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Extrovert">
+                                Extrovert - people give me energy
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Ambivert">
+                                Ambivert - depends on the day
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Social butterfly">
+                                Social butterfly
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Homebody at heart">
+                                Homebody at heart
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="personality" value="Life of the party">
+                                Life of the party when I am in the mood
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>After a long week, do you prefer being around people or alone?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="socialRecharge" value="Around people">
+                                Around people - it recharges me
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="socialRecharge" value="Alone">
+                                Alone - I need to decompress
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="socialRecharge" value="Depends on week">
+                                Honestly, it depends on the week
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>In group settings, which role do you typically play?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Planner / organizer">
+                                The planner / organizer
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Hype person">
+                                The hype person
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Observer">
+                                The observer who takes it all in
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Storyteller">
+                                The storyteller
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Connector">
+                                The connector who brings people together
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="groupRole" value="Entertainer">
+                                The entertainer
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Are you more structured or go-with-the-flow?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="structure" value="Structured">
+                                Structured - I love a plan
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="structure" value="Go-with-the-flow">
+                                Go-with-the-flow - spontaneity is my love language
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="structure" value="Somewhere in between">
+                                Somewhere in between
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 8 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">8</div>
+                        <div class="section-title">Thoughtfulness & Boundaries</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What makes you feel most loved and celebrated?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Heartfelt words">
+                                Heartfelt words and messages
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Quality time">
+                                Quality time spent together
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Acts of service">
+                                Acts of service (planning, cooking, helping)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Thoughtful gifts">
+                                Thoughtful and intentional gifts
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Physical affirmation">
+                                Physical affirmation (hugs, presence)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Public celebration">
+                                Being publicly celebrated and affirmed
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="feelLoved" value="Details matter">
+                                Someone remembering the details that matter to me
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>When someone does something thoughtful, what stands out most?</label>
+                        <div class="hint">e.g. the effort, the personalization, the timing, the surprise element</div>
+                        <textarea name="thoughtfulMoment"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Anything you do NOT like for your birthday?</label>
+                        <div class="hint">Help us avoid misses! e.g. no surprise parties, no public singing, no large crowds</div>
+                        <textarea name="birthdayDislikes"></textarea>
+                    </div>
+                </div>
+
+                <!-- SECTION 9 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">9</div>
+                        <div class="section-title">Personal Touch</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What is one thing people often misunderstand about you?</label>
+                        <div class="hint">Optional</div>
+                        <textarea name="misunderstand"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What instantly lifts your mood?</label>
+                        <div class="hint">e.g. a funny meme, a specific song, a call from a friend</div>
+                        <input type="text" name="moodLift">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Love Language (if known)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="loveLanguage" value="Words of affirmation">
+                                Words of affirmation
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="loveLanguage" value="Acts of service">
+                                Acts of service
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="loveLanguage" value="Receiving gifts">
+                                Receiving gifts
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="loveLanguage" value="Quality time">
+                                Quality time
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="loveLanguage" value="Physical touch">
+                                Physical touch
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Any traditions, cultural elements, or special details you would like included?</label>
+                        <div class="hint">Optional - e.g. a specific cultural dish, a meaningful song, a family tradition</div>
+                        <textarea name="specialDetails"></textarea>
+                    </div>
+                </div>
+
+                <!-- SECTION 10 -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-num">10</div>
+                        <div class="section-title">Final Notes</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ideal Budget Comfort Level for Your Celebration</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="budgetLevel" value="$">
+                                $ - Keep it simple and sweet
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="budgetLevel" value="$$">
+                                $$ - Mid-range is perfect
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="budgetLevel" value="$$$">
+                                $$$ - Go all out, Soror!
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="budgetLevel" value="Flexible">
+                                Flexible - I am just grateful for the love
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Anything else your line sisters should know to make your birthday extra special?</label>
+                        <div class="hint">This is your space - share anything you would like us to know!</div>
+                        <textarea name="finalNotes"></textarea>
+                    </div>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="button-group">
+                    <button type="reset" class="btn-secondary">Clear Form</button>
+                    <button type="submit" class="btn-primary">Save My Profile 💗</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- DASHBOARD TAB -->
+        <div id="dashboard" class="dashboard">
+            <div style="text-align: center; margin: 30px 0;">
+                <h2 style="color: var(--aka-green); font-size: 1.8em; margin-bottom: 10px;">Birthday Profiles Collected</h2>
+                <p id="responseCount" style="color: var(--aka-pink); font-size: 1.2em; font-weight: bold;">0 Sorrors have completed their profiles</p>
+            </div>
+
+            <div id="responsesList" class="responses-grid"></div>
+            <div id="noResponses" style="text-align: center; padding: 40px; background: var(--aka-light-green); border-radius: 12px; margin-top: 30px;">
+                <p style="font-size: 1.1em; color: var(--aka-green);">No profiles yet. Be the first to share your birthday experience!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize storage
+        function getResponses() {
+            const data = localStorage.getItem('akaResponses');
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveResponses(responses) {
+            localStorage.setItem('akaResponses', JSON.stringify(responses));
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('birthdayForm'));
+            const response = {};
+            const checkboxGroups = {};
+
+            for (let [key, value] of formData.entries()) {
+                if (response.hasOwnProperty(key)) {
+                    if (!checkboxGroups[key]) {
+                        response[key] = [response[key]];
+                        checkboxGroups[key] = true;
+                    }
+                    response[key].push(value);
+                } else if (document.querySelector(`input[name="${key}"][type="checkbox"]`)) {
+                    checkboxGroups[key] = true;
+                    response[key] = [value];
+                } else {
+                    response[key] = value;
+                }
+            }
+
+            response.timestamp = new Date().toISOString();
+            response.id = Math.random().toString(36).substr(2, 9);
+
+            const responses = getResponses();
+            responses.push(response);
+            saveResponses(responses);
+
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            setTimeout(() => successMsg.classList.remove('show'), 4000);
+
+            // Reset form
+            document.getElementById('birthdayForm').reset();
+
+            // Update dashboard
+            updateDashboard();
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.form-container, .dashboard').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            if (tabName === 'form') {
+                document.getElementById('form').classList.add('active');
+            } else {
+                document.getElementById('dashboard').classList.add('active');
+                updateDashboard();
+            }
+
+            event.target.classList.add('active');
+        }
+
+        // Update dashboard
+        function updateDashboard() {
+            const responses = getResponses();
+            const responsesList = document.getElementById('responsesList');
+            const noResponses = document.getElementById('noResponses');
+            const countEl = document.getElementById('responseCount');
+
+            countEl.textContent = responses.length + ' Soror' + (responses.length !== 1 ? 's' : '') + ' have completed their profile' + (responses.length !== 1 ? 's' : '');
+
+            if (responses.length === 0) {
+                responsesList.style.display = 'none';
+                noResponses.style.display = 'block';
+                return;
+            }
+
+            responsesList.style.display = 'grid';
+            noResponses.style.display = 'none';
+            responsesList.innerHTML = responses.map((response, index) => `
+                <div class="response-card">
+                    <h3>${response.fullName || 'Soror'}</h3>
+                    <p><strong>Birthday:</strong> ${response.birthday || 'Not provided'}</p>
+                    <p><strong>Line Name:</strong> ${response.lineName || 'Not provided'}</p>
+                    <button class="profile-btn" onclick="viewProfile(${index})">View Full Profile</button>
+                </div>
+            `).join('');
+        }
+
+        // View individual profile
+        function viewProfile(index) {
+            const responses = getResponses();
+            const response = responses[index];
+            
+            const profileHtml = generateProfileSheet(response);
+            const profileWindow = window.open();
+            profileWindow.document.write(profileHtml);
+            profileWindow.document.close();
+        }
+
+        // Generate profile sheet
+        function generateProfileSheet(response) {
+            const formatValue = (value) => {
+                if (Array.isArray(value)) {
+                    return value.join(', ');
+                }
+                return value || 'Not provided';
+            };
+
+            return `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${response.fullName} - Birthday Profile</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #FDF9F3;
+            padding: 40px;
+        }
+        .profile-sheet {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .profile-header {
+            text-align: center;
+            border-bottom: 3px solid #FA8072;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .profile-header h1 {
+            font-size: 2.5em;
+            color: #6AAB20;
+            margin-bottom: 5px;
+        }
+        .profile-header p {
+            color: #FA8072;
+            font-size: 1.2em;
+        }
+        .profile-section {
+            margin-bottom: 30px;
+        }
+        .profile-section h2 {
+            font-size: 1.4em;
+            color: #FA8072;
+            border-bottom: 2px solid #E8F3D8;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .profile-item {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 20px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #E8F3D8;
+            border-radius: 6px;
+        }
+        .profile-item label {
+            font-weight: 600;
+            color: #6AAB20;
+        }
+        .profile-item .value {
+            color: #2D1B2E;
+        }
+        .print-btn {
+            background: #6AAB20;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .print-btn:hover {
+            background: #5a8f1a;
+        }
+        @media print {
+            body { padding: 0; }
+            .print-btn { display: none; }
+            .profile-sheet { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-sheet">
+        <button class="print-btn" onclick="window.print(); return false;">Print Profile 🖨️</button>
+        
+        <div class="profile-header">
+            <h1>${response.fullName}</h1>
+            <p>${response.lineName ? 'Line Name: ' + response.lineName : ''}</p>
+            <p>Birthday: ${response.birthday}</p>
+        </div>
+
+        <div class="profile-section">
+            <h2>Basic Information</h2>
+            <div class="profile-item">
+                <label>Contact Method:</label>
+                <div class="value">${formatValue(response.contact)}</div>
+            </div>
+            ${response.email ? '<div class="profile-item"><label>Email:</label><div class="value">' + response.email + '</div></div>' : ''}
+            ${response.phone ? '<div class="profile-item"><label>Phone:</label><div class="value">' + response.phone + '</div></div>' : ''}
+        </div>
+
+        ${response.hasChildren ? `
+        <div class="profile-section">
+            <h2>Family</h2>
+            <div class="profile-item">
+                <label>Children:</label>
+                <div class="value">${formatValue(response.hasChildren)}</div>
+            </div>
+            ${response.childrenInfo ? '<div class="profile-item"><label>Details:</label><div class="value">' + response.childrenInfo + '</div></div>' : ''}
+        </div>
+        ` : ''}
+
+        <div class="profile-section">
+            <h2>Birthday Preferences</h2>
+            ${response.celebrationStyle ? '<div class="profile-item"><label>Celebration Style:</label><div class="value">' + formatValue(response.celebrationStyle) + '</div></div>' : ''}
+            ${response.birthdayVibe ? '<div class="profile-item"><label>Birthday Vibe:</label><div class="value">' + formatValue(response.birthdayVibe) + '</div></div>' : ''}
+            ${response.planPreference ? '<div class="profile-item"><label>Plan Preference:</label><div class="value">' + formatValue(response.planPreference) + '</div></div>' : ''}
+            ${response.attentionType ? '<div class="profile-item"><label>Attention Type:</label><div class="value">' + formatValue(response.attentionType) + '</div></div>' : ''}
+            ${response.celebrationSize ? '<div class="profile-item"><label>Celebration Size:</label><div class="value">' + formatValue(response.celebrationSize) + '</div></div>' : ''}
+        </div>
+
+        <div class="profile-section">
+            <h2>Favorites</h2>
+            ${response.cakeFlavor ? '<div class="profile-item"><label>Cake Flavor:</label><div class="value">' + response.cakeFlavor + '</div></div>' : ''}
+            ${response.favoriteColor ? '<div class="profile-item"><label>Favorite Color:</label><div class="value">' + response.favoriteColor + '</div></div>' : ''}
+            ${response.favoriteFlower ? '<div class="profile-item"><label>Favorite Flower:</label><div class="value">' + response.favoriteFlower + '</div></div>' : ''}
+            ${response.favoriteMusic ? '<div class="profile-item"><label>Favorite Music:</label><div class="value">' + response.favoriteMusic + '</div></div>' : ''}
+            ${response.favoriteDrink ? '<div class="profile-item"><label>Favorite Drink:</label><div class="value">' + response.favoriteDrink + '</div></div>' : ''}
+        </div>
+
+        <div class="profile-section">
+            <h2>Food & Dining</h2>
+            ${response.favoriteCuisine ? '<div class="profile-item"><label>Cuisine:</label><div class="value">' + response.favoriteCuisine + '</div></div>' : ''}
+            ${response.favoriteRestaurant ? '<div class="profile-item"><label>Restaurants:</label><div class="value">' + response.favoriteRestaurant + '</div></div>' : ''}
+            ${response.mealTime ? '<div class="profile-item"><label>Meal Time:</label><div class="value">' + formatValue(response.mealTime) + '</div></div>' : ''}
+            ${response.dietaryRestrictions ? '<div class="profile-item"><label>Dietary Info:</label><div class="value">' + response.dietaryRestrictions + '</div></div>' : ''}
+        </div>
+
+        <div class="profile-section">
+            <h2>Gifts</h2>
+            ${response.giftTypes ? '<div class="profile-item"><label>Gift Types:</label><div class="value">' + formatValue(response.giftTypes) + '</div></div>' : ''}
+            ${response.giftPreference ? '<div class="profile-item"><label>Gift Preference:</label><div class="value">' + formatValue(response.giftPreference) + '</div></div>' : ''}
+            ${response.wantedItem ? '<div class="profile-item"><label>Want List:</label><div class="value">' + response.wantedItem + '</div></div>' : ''}
+        </div>
+
+        <div class="profile-section">
+            <h2>Personality</h2>
+            ${response.personality ? '<div class="profile-item"><label>Personality:</label><div class="value">' + formatValue(response.personality) + '</div></div>' : ''}
+            ${response.socialRecharge ? '<div class="profile-item"><label>Social Recharge:</label><div class="value">' + formatValue(response.socialRecharge) + '</div></div>' : ''}
+            ${response.groupRole ? '<div class="profile-item"><label>Group Role:</label><div class="value">' + formatValue(response.groupRole) + '</div></div>' : ''}
+            ${response.structure ? '<div class="profile-item"><label>Structure:</label><div class="value">' + formatValue(response.structure) + '</div></div>' : ''}
+        </div>
+
+        ${response.feelLoved ? `
+        <div class="profile-section">
+            <h2>What Makes Her Feel Loved</h2>
+            <div class="profile-item">
+                <label>Feels Loved When:</label>
+                <div class="value">${formatValue(response.feelLoved)}</div>
+            </div>
+            ${response.thoughtfulMoment ? '<div class="profile-item"><label>Thoughtful Moments:</label><div class="value">' + response.thoughtfulMoment + '</div></div>' : ''}
+            ${response.birthdayDislikes ? '<div class="profile-item"><label>Birthday Dislikes:</label><div class="value">' + response.birthdayDislikes + '</div></div>' : ''}
+        </div>
+        ` : ''}
+
+        ${response.loveLanguage ? `
+        <div class="profile-section">
+            <h2>Personal Details</h2>
+            <div class="profile-item">
+                <label>Love Language:</label>
+                <div class="value">${formatValue(response.loveLanguage)}</div>
+            </div>
+            ${response.moodLift ? '<div class="profile-item"><label>Mood Lift:</label><div class="value">' + response.moodLift + '</div></div>' : ''}
+            ${response.specialDetails ? '<div class="profile-item"><label>Special Details:</label><div class="value">' + response.specialDetails + '</div></div>' : ''}
+        </div>
+        ` : ''}
+
+        ${response.finalNotes ? `
+        <div class="profile-section">
+            <h2>Final Notes</h2>
+            <div class="profile-item">
+                <label>Message:</label>
+                <div class="value">${response.finalNotes}</div>
+            </div>
+        </div>
+        ` : ''}
+    </div>
+</body>
+</html>
+            `;
+        }
+
+        // Initialize dashboard on load
+        window.addEventListener('load', updateDashboard);
+    </script>
+</body>
+</html>
